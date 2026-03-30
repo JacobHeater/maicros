@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# mAIcros
 
-First, run the development server:
+mAIcros is a macronutrient analysis tool that helps users evaluate and optimize meals to meet their personal macro targets. It uses AI to analyze the composition of a meal, then suggests practical substitutions, additions, or removals to help the meal better match the user's goals.
+
+## Key Features
+
+- Analyze a meal's macronutrient breakdown (protein, carbs, fats) and calorie estimate.
+- Provide targeted suggestions: swap, add, or remove items to better meet macro targets.
+- Explain tradeoffs and show how each suggestion affects totals.
+- Integrates AI analysis to handle real-world meal descriptions and ambiguous inputs.
+
+## How It Works
+
+1. The user provides a meal description (list of items and portions, or photo/recipe where supported).
+2. mAIcros parses the meal and estimates macros for each item.
+3. The AI engine evaluates the current macro totals against the user's targets and suggests actionable changes (substitutions, additions, removals) with estimated macro impacts.
+4. The user reviews suggestions and adjusts as desired.
+
+## Quick Start
+
+Prerequisites: Node.js (recommended LTS) and npm installed.
+
+Install dependencies and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the app at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage Examples
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Enter a meal composed of items and portion sizes to see the macro breakdown.
+- Ask for suggestions like "increase protein by 15g" or "reduce carbs by swapping the rice" and review the ranked options the AI provides.
 
-## Learn More
+## Data & Privacy
 
-To learn more about Next.js, take a look at the following resources:
+mAIcros only stores or transmits data as required by the chosen deployment and integrations. When running locally, user meal data stays on the device unless you enable syncing or a cloud service. Review the app settings and any third-party integrations before enabling remote storage.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The project was scaffolded with Next.js (TypeScript + Tailwind template by default).
+- Start development with `npm run dev` and build with `npm run build`.
+- API routes and AI integrations live under `app/` and `src/` (depending on scaffold). Update the AI adapter to plug in your preferred model/provider.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions, issues, and feature requests are welcome. Please open a ticket, and follow the repo's code style and testing approach when submitting PRs.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+Specify your license here (e.g., MIT). Replace this line with the actual license text or link.
+
+---
+
+If you want, I can also add example screenshots, a sample workflow, or suggested API endpoints for automating meal analysis. Which would you like next?
