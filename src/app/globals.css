@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
+/* Define a more vibrant and food-inspired color palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark, futuristic theme (default) */
+  --background: #071025; /* near-black blue */
+  --background-2: #0b1220;
+  --surface: #0f1724;
+  --card: #0b1320;
+  --foreground: #E6F0FF; /* soft icy */
+  --muted-foreground: #94A3B8; /* slate */
+
+  --accent-1: #00F5A0; /* neon green */
+  --accent-2: #6EE7F1; /* cyan */
+  --accent-3: #A78BFA; /* violet */
+  --accent-contrast: #020617;
+
+  --primary: var(--accent-1);
+  --primary-hover: #00e08a;
+  --secondary: var(--accent-2);
+  --secondary-hover: #4fd1e0;
+  --primary-text: #020617;
 }
 
 @theme inline {
@@ -10,26 +27,140 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-comfortaa);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #071025;
+    --background-2: #0b1220;
+    --surface: #0f1724;
+    --card: #0b1320;
+    --foreground: #E6F0FF;
+    --muted-foreground: #94A3B8;
+    --primary: var(--accent-1);
+    --secondary: var(--accent-2);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@keyframes slide-in {
-  from { opacity: 0; transform: translateY(12px); }
+html, body, #__next {
+  overflow-x: hidden !important;
+}
+
+body {
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(8,20,40,0.6), transparent 10%), 
+              linear-gradient(180deg, var(--background) 0%, var(--background-2) 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-width: 0;
+}
+
+/* --- CHAT LAYOUT & CONSTRAINTS --- */
+
+.message-content {
+  flex: 1;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.message-item {
+  min-width: 0;
+  width: 100%;
+  flex-wrap: nowrap; /* Prevent avatar and bubble from stacking */
+  overflow: visible;
+}
+
+.message-item.justify-end .message-content,
+.message-item.justify-start .message-content {
+  max-width: calc(100% - 72px);
+}
+
+/* --- TABLE FIXES (Targeting Markdown output) --- */
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.markdown-body th {
+  text-align: left;
+  padding: 8px 12px;
+  color: var(--accent-2);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.markdown-body td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- BUBBLE STYLES --- */
+
+.assistant-bubble {
+  background: linear-gradient(135deg, #34D399 5%, #06B6D4 60%);
+  color: var(--primary-text);
+  border-radius: 18px 18px 18px 6px;
+  box-shadow: 0 10px 25px -5px rgba(0, 245, 160, 0.15);
+}
+
+.user-bubble {
+  background: linear-gradient(135deg, #F472B6 0%, #FB923C 100%);
+  color: white;
+  border-radius: 18px 18px 6px 18px;
+  box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.15);
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes slide-in { 
+  from { opacity: 0; transform: translateY(15px); } 
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-slide-in {
-  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slide-in 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes pulse-dots {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.animate-pulse-dots span {
+  display: inline-block;
+  animation: pulse-dots 1.2s infinite ease-in-out;
+}
+.animate-pulse-dots span:nth-child(2) { animation-delay: 0.2s; }
+.animate-pulse-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* --- SCROLLBAR --- */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-1);
+}
+
+/* --- DECORATIVE --- */
+
+.sparkle {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, white, rgba(255,255,255,0.2));
+  position: absolute; right: 12px; top: -6px;
+  box-shadow: 0 0 10px white;
 }

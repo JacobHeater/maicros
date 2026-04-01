@@ -1,14 +1,12 @@
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans text-zinc-900 dark:text-zinc-100">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] font-sans">
       <header className="mx-auto max-w-5xl px-6 py-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-md bg-gradient-to-br from-indigo-500 to-teal-400 flex items-center justify-center text-white font-bold">mA</div>
-          <h2 className="text-xl font-semibold">mAIcros</h2>
+          <div className="h-10 w-10 rounded-md bg-gradient-to-br from-indigo-500 to-teal-400 flex items-center justify-center text-white font-bold">N</div>
+          <h2 className="text-xl font-semibold">Newton</h2>
         </div>
         <nav className="space-x-4 text-sm">
-          <a href="#features" className="hover:underline">Features</a>
-          <a href="#quick-start" className="hover:underline">Quick Start</a>
           <a href="/chat" className="hover:underline">Chat with Newton</a>
         </nav>
       </header>
@@ -16,31 +14,24 @@ export default function Home() {
       <main className="mx-auto max-w-5xl px-6 py-12">
         <section className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <h1 className="text-4xl font-extrabold leading-tight">Analyze meals. Optimize macros. Eat smarter.</h1>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              mAIcros uses AI to estimate macronutrients from meal descriptions and suggests practical swaps,
-              additions, or removals so meals match your personal macro targets.
+            <h1 className="text-4xl font-extrabold leading-tight text-[var(--accent-1)]">Talk to Newton — your AI nutritionist.</h1>
+            <p className="mt-4 text-lg text-[var(--muted-foreground)]">
+              Describe your meal in natural language and Newton — an AI nutritionist — will estimate macros, suggest improvements, and help you meet your goals.
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6">
               <a
-                href="#quick-start"
-                className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-white font-medium hover:bg-indigo-700"
+                href="/chat"
+                className="inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-6 py-3 text-[var(--primary-text)] font-medium hover:bg-[var(--primary-hover)]"
               >
-                Try it locally
-              </a>
-              <a
-                href="#features"
-                className="inline-flex items-center justify-center rounded-full border border-zinc-200 px-5 py-3 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              >
-                How it works
+                Chat with Newton
               </a>
             </div>
           </div>
 
-          <div className="rounded-lg border border-zinc-100 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-            <h3 className="font-semibold">Example analysis</h3>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">"Grilled chicken breast, 1 cup cooked rice, mixed veggies, 1 tbsp olive oil"</p>
+          <div className="rounded-lg border border-[rgba(255,255,255,0.12)] bg-[rgba(15,23,36,0.9)] p-6 shadow-[0_20px_50px_-30px_rgba(0,245,160,0.5)]">
+            <h3 className="font-semibold text-[var(--foreground)]">Example analysis</h3>
+            <p className="mt-2 text-sm text-[var(--muted-foreground)]">"Grilled chicken breast, 1 cup cooked rice, mixed veggies, 1 tbsp olive oil"</p>
             <ul className="mt-4 grid grid-cols-3 gap-2 text-sm">
               <li className="text-center">
                 <div className="font-bold">Protein</div>
@@ -70,21 +61,24 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="quick-start" className="mt-12 rounded-lg border border-zinc-100 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-          <h2 className="text-2xl font-bold">Quick Start</h2>
-          <p className="mt-3 text-zinc-600 dark:text-zinc-400">Run locally with Node.js (LTS):</p>
-          <pre className="mt-4 rounded bg-zinc-50 p-4 text-sm dark:bg-zinc-800">
-            <code>npm install
-npm run dev</code>
-          </pre>
-          <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">Open the app at http://localhost:3000 and enter a meal description to get started.</p>
+        <section id="quick-start" className="mt-12 rounded-lg border border-[rgba(255,255,255,0.06)] bg-[rgba(11,17,28,0.55)] p-6">
+          <h2 className="text-2xl font-bold">How to use Newton</h2>
+          <p className="mt-3 text-[var(--muted-foreground)]">No downloads or installs — just click Chat and describe your meal.</p>
+          <ul className="mt-4 list-disc pl-5 text-sm text-[var(--muted-foreground)]">
+            <li>Click "Chat with Newton" to open the conversation.</li>
+            <li>Type your meal in plain language (e.g., "2 eggs, avocado toast, banana").</li>
+            <li>Newton will estimate macros, suggest swaps, and answer follow-ups.</li>
+          </ul>
+          <div className="mt-6">
+            <a href="/chat" className="inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-5 py-3 text-[var(--primary-text)] font-medium hover:bg-[var(--primary-hover)]">Start chatting with Newton</a>
+          </div>
         </section>
       </main>
 
-      <footer className="border-t border-zinc-100 dark:border-zinc-800 mt-12 py-6">
-        <div className="mx-auto max-w-5xl px-6 text-sm text-zinc-600 dark:text-zinc-400">
+      <footer className="border-t border-[rgba(255,255,255,0.1)] mt-12 py-6">
+        <div className="mx-auto max-w-5xl px-6 text-sm text-[var(--muted-foreground)]">
           <div className="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
-            <div>© {new Date().getFullYear()} mAIcros — Built with Next.js + Tailwind</div>
+            <div>© {new Date().getFullYear()} Newton — Built with Next.js + Tailwind</div>
             <div className="space-x-4">
               <a href="/" className="hover:underline">Privacy</a>
               <a href="/" className="hover:underline">License</a>
